@@ -1,4 +1,4 @@
-package ProyectoTienda.demo;
+package ProyectoTienda;
 
 import java.util.Locale;
 import org.springframework.context.MessageSource;
