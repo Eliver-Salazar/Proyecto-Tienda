@@ -16,6 +16,7 @@ public class CategoriaServices {
  
     @Autowired
     private CategoriaRepository categoriaRepository;
+    
     @Transactional(readOnly=true)
     public List<Categoria> getCategorias(boolean activo) {
         if (activo) {

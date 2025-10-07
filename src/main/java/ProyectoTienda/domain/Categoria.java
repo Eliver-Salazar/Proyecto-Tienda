@@ -12,15 +12,17 @@ import java.time.LocalDateTime;
 import java.util.List;
 import lombok.Data;
  
-@Data
+@Data   
 @Entity
 @Table(name = "categoria")
 public class Categoria implements Serializable {
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_categoria")
     private Long idCategoria;
+    
     @NotBlank(message = "La descripción no puede estar vacía")
     @Size(max = 50, message = "La descripción no puede exceder los 50 caracteres")
     @Column(length = 50, nullable = false, unique = true)
@@ -29,6 +31,7 @@ public class Categoria implements Serializable {
     @Size(max = 1024, message = "La ruta de la imagen no puede exceder los 1024 caracteres")
     @Column(name = "ruta_imagen", length = 1024)
     private String rutaImagen;
+    
     @Column(nullable = false)
     private boolean activo;
  
