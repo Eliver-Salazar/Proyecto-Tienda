@@ -16,20 +16,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/consultas")
 public class ConsultaController {
 
-    
-    private final ProductoService productoService;  
+    private final ProductoService productoService;
 
     public ConsultaController(ProductoService productoService) {
         this.productoService = productoService;
     }
-    
+
     @GetMapping("/listado")
     public String listado(Model model) {
         var lista = productoService.getProductos(false);
         model.addAttribute("productos", lista);
         return "/consultas/listado";
     }
-    
+
     @PostMapping("/consultaDerivada")
     public String consultaDerivada(@RequestParam() double precioInf,
             @RequestParam() double precioSup, Model model) {
@@ -39,7 +38,7 @@ public class ConsultaController {
         model.addAttribute("precioSup", precioSup);
         return "/consultas/listado";
     }
-    
+
     @PostMapping("/consultaJPQL")
     public String consultaJPQL(@RequestParam() double precioInf,
             @RequestParam() double precioSup, Model model) {
@@ -49,7 +48,7 @@ public class ConsultaController {
         model.addAttribute("precioSup", precioSup);
         return "/consultas/listado";
     }
-    
+
     @PostMapping("/consultaSQL")
     public String consultaSQL(@RequestParam() double precioInf,
             @RequestParam() double precioSup, Model model) {
@@ -59,4 +58,16 @@ public class ConsultaController {
         model.addAttribute("precioSup", precioSup);
         return "/consultas/listado";
     }
+
+    @PostMapping("/consultaAmpliada")
+    public String consultaAmpliada(@RequestParam() double precioInf,
+            @RequestParam() double precioSup,
+            Model model) {
+        var lista = productoService.consultaAmpliada(precioInf, precioSup);
+        model.addAttribute("productos", lista);
+        model.addAttribute("precioInf", precioInf);
+        model.addAttribute("precioSup", precioSup);
+        return "/consultas/listado";
+    }
+
 }
