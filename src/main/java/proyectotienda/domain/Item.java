@@ -7,9 +7,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor 
+@NoArgsConstructor
 @AllArgsConstructor
 public class Item implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     // Referencia a la entidad Producto (ya cargada de la BD)

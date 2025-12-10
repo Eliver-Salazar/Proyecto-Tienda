@@ -22,9 +22,11 @@ public class Factura implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_factura")
     private Integer idFactura;
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_usuario") // Nombre de la columna FK en la tabla factura
     private Usuario usuario;
+    
     private LocalDateTime fecha;
     private BigDecimal total;    
     @Enumerated(EnumType.STRING) // Mapea el enum de Java al campo ENUM de SQL como un String
